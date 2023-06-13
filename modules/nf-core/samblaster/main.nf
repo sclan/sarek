@@ -25,7 +25,7 @@ process SAMBLASTER {
     if( "$bam" == "${prefix}.bam" ) error "Input and output names are the same, use \"task.ext.prefix\" to disambiguate!"
     """
     samtools view -h $args2 $bam | \\
-    samblaster $args | \\
+    samblaster $args --ignoreUnmated | \\
     samtools view $args3 -Sb - >${prefix}.bam
 
     cat <<-END_VERSIONS > versions.yml
